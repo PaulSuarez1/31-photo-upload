@@ -16,9 +16,18 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
 
+    private static final int REQUEST_SAVE_PHOTO = 2;
+
+    @BindView(R.id.image)
     ImageView mImageView;
+    private StorageReference mStorageRef;
+    String mCurrentPhotoPath;
+
 
 
 
@@ -26,6 +35,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ButterKnife.bind(this);
+        mStorageRef = FirebaseStorage.getInstance().getReference();
+
+        try {
+            downloadFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
