@@ -36,10 +36,6 @@ public class MainActivity extends AppCompatActivity {
     ImageView mImageView;
     private StorageReference mStorageRef;
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -211,6 +207,7 @@ public class MainActivity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
+                System.out.println("failed to download");
                 e.printStackTrace();
             }
         });
