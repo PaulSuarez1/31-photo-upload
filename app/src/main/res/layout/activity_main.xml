@@ -11,8 +11,30 @@
         android:adjustViewBounds="true"
         android:scaleType="centerInside"
         android:src="@drawable/placeholder"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="0sp" />
+        android:layout_height="0sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/list"/>
+
+    <LinearLayout
+        android:id="@+id/list"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0sp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <Button
+            android:id="@+id/takePicture"
+            android:text="@string/take_picture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/savePicture"
+            android:text="@string/save_picture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
