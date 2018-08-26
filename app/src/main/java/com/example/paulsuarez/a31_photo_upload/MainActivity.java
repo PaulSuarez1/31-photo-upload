@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.image)
     ImageView mImageView;
     private StorageReference mStorageRef;
-    String mCurrentPhotoPath;
+
 
 
 
@@ -79,6 +79,16 @@ public class MainActivity extends AppCompatActivity {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             mImageView.setImageBitmap(imageBitmap);
+        } else if (requestCode == REQUEST_SAVE_PHOTO && resultCode == RESULT_OK) {
+            setPictureFromFile();
+        }
+    }
+
+    public void setPictureFromThumbnail(Intent data) {
+        Bundle extras = data.getExtras();
+        if (extras != null) {
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            mImageView.setImageBitmap(imageBitmap);
         }
     }
 
@@ -101,6 +111,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     static final int REQUEST_TAKE_PHOTO = 1;
+
+    
 
     private void galleryAddPic() {
         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
